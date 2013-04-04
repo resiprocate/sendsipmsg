@@ -1,0 +1,21 @@
+
+
+To build this project:
+
+$ git clone $REPOSITORY
+$ cd sendsipmsg
+$ autoreconf --install
+$ ./configure
+$ make
+
+
+To run the project:
+
+$ ./sendsipmsg sip:${USER}@example.org foo bar myrealm sip:${USER}@localhost 15065
+
+
+To receive and display SIP messages in a console without having a SIP proxy:
+
+$ nc -u -l -p 5060
+
+
