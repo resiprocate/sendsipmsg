@@ -1,4 +1,8 @@
 
+To prepare your machine for building the project:
+
+# apt-get install libresiprocate-1.8-dev
+
 
 To build this project:
 
@@ -11,7 +15,15 @@ $ make
 
 To run the project:
 
-$ ./sendsipmsg sip:${USER}@example.org foo bar myrealm sip:${USER}@localhost 15065
+$ ./sendsipmsg \
+   sip:${USER}@example.org \
+   foo bar myrealm \
+   sip:${USER}@localhost 15065
+
+
+In this example, the process will send SIP messages using SIP port 15065 as
+the source port and the default SIP port, 5060, will be used as the destination
+port.
 
 
 To receive and display SIP messages in a console without having a SIP proxy:
