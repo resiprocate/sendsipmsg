@@ -84,8 +84,6 @@ int main(int argc, char *argv[])
    InfoLog(<< "log: from: " << from << ", to: " << to << ", port: " << port << "\n");
    InfoLog(<< "user: " << user << ", passwd: " << passwd << ", realm: " << realm << "\n");
 
-   // sip logic
-   //RegListener client;
    SharedPtr<MasterProfile> profile(new MasterProfile);
    auto_ptr<ClientAuthManager> clientAuth(new ClientAuthManager());
 
@@ -94,23 +92,16 @@ int main(int argc, char *argv[])
    clientDum.addTransport(UDP, port);
    clientDum.setMasterProfile(profile);
 
-   //clientDum.setClientRegistrationHandler(&client);
    clientDum.setClientAuthManager(clientAuth);
    clientDum.getMasterProfile()->setDefaultRegistrationTime(70);
    clientDum.getMasterProfile()->addSupportedMethod(MESSAGE);
    clientDum.getMasterProfile()->addSupportedMimeType(MESSAGE, Mime("text", "plain"));
    ClientMessageHandler *cmh = new ClientMessageHandler();
-   //ServerMessageHandler *smh = new ServerMessageHandler();
    clientDum.setClientPagerMessageHandler(cmh);
-   //clientDum.setServerPagerMessageHandler(smh);
 
    NameAddr naFrom(from.c_str());
    profile->setDefaultFrom(naFrom);
    profile->setDigestCredential(realm.c_str(), user.c_str(), passwd.c_str());
-
-   //SharedPtr<SipMessage> regMessage = clientDum.makeRegistration(naFrom);
-   //InfoLog( << *regMessage << "Generated register: " << endl << *regMessage );
-   //clientDum.send( regMessage );
 
    InfoLog(<< "Sending MESSAGE\n");
    NameAddr naTo(to.c_str());
