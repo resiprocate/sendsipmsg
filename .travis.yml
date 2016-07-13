@@ -11,7 +11,7 @@ compiler:
  - gcc
  - clang
 script:
- - autoreconf
+ - autoreconf --install
  - ./configure
  - make
  - make check
