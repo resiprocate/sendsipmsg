@@ -2,7 +2,7 @@ language: cpp
 env:
   global:
   - sudo apt-get update -qq
-  - sudo apt-get install -qq libresiprocate-dev
+  - sudo apt-get install -qq autotools-dev libresiprocate-dev
 compiler:
   - gcc
   - clang
