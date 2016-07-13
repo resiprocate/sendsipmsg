@@ -1,13 +1,12 @@
 language: cpp
-env:
-  global:
-  - sudo apt-get update -qq
-  - sudo apt-get install -qq autotools-dev libresiprocate-dev
+before_install:
+ - sudo apt-get update -qq
+ - sudo apt-get install -qq autotools-dev libresiprocate-dev
 compiler:
-  - gcc
-  - clang
+ - gcc
+ - clang
 script:
-  - autoreconf
-  - ./configure
-  - make
-  - make check
+ - autoreconf
+ - ./configure
+ - make
+ - make check
